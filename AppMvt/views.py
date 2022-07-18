@@ -37,7 +37,7 @@ def familiar(self):
         "familiar2Nom": familiar2.nombre , "familiar2Ape": familiar2.apellido, "familiar2Edad": familiar2.edad, "familiar2Email": familiar2.email, "familiar2Prof": familiar2.profesion, "familiar2Fech": familiar2.fecha_nacimiento,
     }
 
-    miHtml= open("/Users/ianmunna/Documents/Proyecto_Final/MVT-IanMunna/AppMvt/templates/AppMvt/familiares.html")
+    miHtml= open("/Users/ianmunna/Documents/DesafioClase18/MVT/AppMvt/templates/AppMvt/familiares.html")
 
     plantilla= Template(miHtml.read())
 
@@ -67,7 +67,7 @@ def mascota(self):
         "mascota2Nom": mascota2.nombre, "mascota2Raz": mascota2.raza,
     }
     
-    miHtml= open("/Users/ianmunna/Documents/Proyecto_Final/MVT-IanMunna/AppMvt/templates/AppMvt/mascota.html")
+    miHtml= open("/Users/ianmunna/Documents/DesafioClase18/MVT/AppMvt/templates/AppMvt/mascota.html")
 
     plantilla= Template(miHtml.read())
 
@@ -97,7 +97,7 @@ def hogar(self):
         "hogar2Dir": hogar2.direccion ,
     }
 
-    miHtml= open("/Users/ianmunna/Documents/Proyecto_Final/MVT-IanMunna/AppMvt/templates/AppMvt/hogar.html")
+    miHtml= open("/Users/ianmunna/Documents/DesafioClase18/MVT/AppMvt/templates/AppMvt/hogar.html")
 
     plantilla= Template(miHtml.read())
 
