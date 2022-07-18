@@ -4,8 +4,8 @@ from AppMvt import views
 
 
 urlpatterns = [
-    path('Familiares/', views.familiar),
-    path('Mascota/', views.mascota),
-    path('Hogar/', views.hogar),
-    path('', views.inicio),
+    path('Familiares/', views.familiar, name='familiares'),
+    path('Mascota/', views.mascota, name='mascota'),
+    path('Hogar/', views.hogar, name='hogar'),
+    path('', views.inicio, name='inicio'),
 ]
