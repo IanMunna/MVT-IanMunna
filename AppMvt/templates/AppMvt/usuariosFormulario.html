@@ -7,13 +7,16 @@
     <title>Document</title>
 </head>
 <body>
-    <form action="/AppMvt/usuariosFormulario/" method="POST">
-        {% csrf_token %}
+    <form action="/AppMvt/usuariosFormulario/" method="POST"> {% csrf_token %}
 
-            <p>Mascota: <input type="text" name="mascota"></p>
-            <p>Raza: <input type="number" name="raza"></p>
+        <p>Nombre: <input type="text" name="nombre"></p>
+        <p>Apellido: <input type="text" name="apellido"></p>
+        <p>Edad: <input type="number" name="edad"></p>
+        <p>Email: <input type="text" name="mail"></p>
+        <p>Profesion: <input type="text" name="profesion"></p>
+        <p>Fecha de nacimiento: <input type="text" name="fecha_de_nacimiento"></p>
 
-            <input type="submit" value="Enviar">
+        <input type="submit" value="Enviar">
     </form>
     
 </body>

@@ -21,9 +21,13 @@ def usuariosFormulario(request):
 
     if (request.method == "POST"):
         nombre= request.POST.get("nombre")
-        raza= request.POST.get("raza")
-        mascota=  Mascota(nombre=nombre, raza=raza)
-        mascota.save()
+        apellido= request.POST.get("apellido")
+        edad= request.POST.get("edad")
+        email= request.POST.get("mail")
+        profesion= request.POST.get("profesion")
+        fecha_nacimiento= request.POST.get("fecha de nacimiento")
+        familiar=  Familiar(nombre=nombre, apellido=apellido, edad=edad, email=email, profesion=profesion, fecha_nacimiento=fecha_nacimiento)
+        familiar.save()
         return render (request, "AppMvt/inicio.html")
 
 

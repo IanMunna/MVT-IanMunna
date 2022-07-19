@@ -11,7 +11,7 @@ class Familiar(models.Model):
     fecha_nacimiento= models.DateField()
 
     def __str__(self):
-        return self.nombre+" "+str(self.apellido)
+        return self.nombre+" "+str(self.fecha_nacimiento)
 
 class Mascota(models.Model):
 
