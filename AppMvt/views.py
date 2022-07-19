@@ -17,6 +17,19 @@ def inicio(request):
 def inicio(request):
     return render (request, "AppMvt/inicio.html")
 
+def usuariosFormulario(request):
+
+    if (request.method == "POST"):
+        nombre= request.POST.get("nombre")
+        raza= request.POST.get("raza")
+        mascota=  Mascota(nombre=nombre, raza=raza)
+        mascota.save()
+        return render (request, "AppMvt/inicio.html")
+
+
+
+    return render (request, "AppMvt/usuariosFormulario.html")
+
 ########. models especificos. ########
 def familiar(self):
 

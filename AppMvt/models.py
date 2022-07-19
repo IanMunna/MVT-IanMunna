@@ -10,11 +10,21 @@ class Familiar(models.Model):
     profesion= models.CharField(max_length=50)
     fecha_nacimiento= models.DateField()
 
+    def __str__(self):
+        return self.nombre+" "+str(self.apellido)
+
 class Mascota(models.Model):
 
     nombre=models.CharField(max_length=50)
     raza=models.CharField(max_length=50)
 
+    def __str__(self):
+        return self.nombre
+
 class Hogar(models.Model):
 
     direccion=models.CharField(max_length=100)
+
+    def __str__(self):
+        return self.direccion
+
