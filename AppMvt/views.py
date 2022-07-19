@@ -3,6 +3,7 @@ from django.shortcuts import render
 from django.http import HttpResponse
 from AppMvt.models import Familiar, Mascota, Hogar
 from django.template import Context, Template
+from AppMvt.forms import familiarForm
 
 #vista
 def inicio(request):
@@ -17,22 +18,43 @@ def inicio(request):
 def inicio(request):
     return render (request, "AppMvt/inicio.html")
 
-def usuariosFormulario(request):
-
+#este es un formulario creado con html(el cual fue reemplazado con el uso de 'Forms')
+"""def usuariosFormulario(request):
+    
     if (request.method == "POST"):
         nombre= request.POST.get("nombre")
         apellido= request.POST.get("apellido")
         edad= request.POST.get("edad")
         email= request.POST.get("mail")
         profesion= request.POST.get("profesion")
-        fecha_nacimiento= request.POST.get("fecha de nacimiento")
+        fecha_nacimiento= request.POST.get("fecha_nacimiento")
         familiar=  Familiar(nombre=nombre, apellido=apellido, edad=edad, email=email, profesion=profesion, fecha_nacimiento=fecha_nacimiento)
         familiar.save()
         return render (request, "AppMvt/inicio.html")
 
 
+    return render (request, "AppMvt/usuariosFormulario.html")"""
 
-    return render (request, "AppMvt/usuariosFormulario.html")
+def usuariosFormulario(request):
+    
+    if (request.method == "POST"):
+        miFormulario= Familiar(request.POST)
+        print(miFormulario)
+        if miFormulario.is_valid():
+            info= miFormulario.cleaned_data
+            nombre= info["nombre"]
+            apellido= info["apellido"]
+            edad= info["edad"]
+            email= info["mail"]
+            profesion= info["profesion"]
+            fecha_nacimiento= info["fecha_nacimiento"]
+            familiar=  Familiar(nombre=nombre, apellido=apellido, edad=edad, email=email, profesion=profesion, fecha_nacimiento=fecha_nacimiento)
+            familiar.save()
+            return render (request, "AppMvt/inicio.html")
+    else:
+        miFormulario= familiarForm()
+    return render(request, "AppMvt/usuariosFormulario.html", {"formulario":miFormulario})
+
 
 ########. models especificos. ########
 def familiar(self):
