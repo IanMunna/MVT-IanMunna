@@ -5,7 +5,7 @@ from AppMvt.models import Familiar, Mascota, Hogar
 from django.template import Context, Template
 from AppMvt.forms import familiarForm
 
-#vista
+#vistas de la web
 def inicio(request):
     return render (request, "AppMvt/familiares.html")
 
@@ -17,6 +17,25 @@ def inicio(request):
 
 def inicio(request):
     return render (request, "AppMvt/inicio.html")
+
+def busquedaFamiliar(request):
+    return render(request, "AppMvt/busquedaFamiliar.html")
+
+def buscar(request):
+    
+    if request.GET["edad"]:
+
+        #respuesta= f"Estoy buscando al familiar: {request.GET['familiar']}"
+        edadF= request.GET["edad"]
+        edad= Familiar.objects.filter(edad__icontains=edad)
+
+        return render(request, "AppMvt/resultadoBusquedaFamiliar.html", {"edad":edadF, "nombre":edad})
+
+    else:
+        respuesta= "No ingresaste datos validos"
+    
+    return  HttpResponse(respuesta)
+    
 
 #este es un formulario creado con html(el cual fue reemplazado con el uso de 'Forms')
 """def usuariosFormulario(request):
@@ -33,27 +52,21 @@ def inicio(request):
         return render (request, "AppMvt/inicio.html")
 
 
-    return render (request, "AppMvt/usuariosFormulario.html")"""
+    return render (request, "AppMvt/templates/AppMvt/familiarFormulario.html")"""
 
-def usuariosFormulario(request):
+def familiarFormulario(request):
     
-    if (request.method == "POST"):
-        miFormulario= Familiar(request.POST)
+    if request.method == "POST":
+        miFormulario= familiarForm(request.POST)
         print(miFormulario)
         if miFormulario.is_valid():
             info= miFormulario.cleaned_data
-            nombre= info["nombre"]
-            apellido= info["apellido"]
-            edad= info["edad"]
-            email= info["mail"]
-            profesion= info["profesion"]
-            fecha_nacimiento= info["fecha_nacimiento"]
-            familiar=  Familiar(nombre=nombre, apellido=apellido, edad=edad, email=email, profesion=profesion, fecha_nacimiento=fecha_nacimiento)
+            familiar=  Familiar(nombre=info["nombre"], apellido=info["apellido"], edad=info["edad"], email=info["email"], profesion=info["profesion"], fecha_nacimiento=info["fecha_nacimiento"])
             familiar.save()
             return render (request, "AppMvt/inicio.html")
     else:
         miFormulario= familiarForm()
-    return render(request, "AppMvt/usuariosFormulario.html", {"formulario":miFormulario})
+    return render(request, "AppMvt/familiarFormulario.html", {"miFormulario":miFormulario})
 
 
 ########. models especificos. ########
