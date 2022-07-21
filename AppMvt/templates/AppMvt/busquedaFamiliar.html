@@ -11,7 +11,7 @@
 
     <h2>Por favor, ingrese la edad correspondiente</h2>
 
-    {% if edad.errors %}
+    {% if familiar.errors %}
 
     <p style="color: red">NO COINCIDE CON LA LISTA DE FAMILIARES</p> 
     
@@ -22,6 +22,22 @@
         <input type="number" name="edad" id="edad">
         <input type="submit", value="Enviar">
     </form>
+
+    <p>Resultados de la busqueda:</p>
+
+    {% if buscar %}
+        <ul>
+            {% for familiar in buscar %}
+            <li>
+                <p> {{familiar.nombre}}</p>
+                <p> {{familiar.apellido}}</p>
+                <p> {{familiar.edad}}</p>
+            </li>
+            {% endfor %}
+        </ul>
+    {% else %}
+        No se encontraron resultados.
+    {% endif %}
     
 </body>
 </html>

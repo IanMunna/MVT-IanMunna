@@ -5,7 +5,7 @@ from django.http import HttpResponse
 from AppMvt.models import Familiar, Mascota, Hogar
 from django.template import Context, Template
 from AppMvt.forms import familiarForm
-from MVT.AppMvt.forms import FormBusuquedaFamiliar
+from AppMvt.forms import FormBusuquedaFamiliar
 
 #vistas de la web 
 def inicio(request):
@@ -31,8 +31,7 @@ def buscar(request):
     else:
         buscar= Familiar.objects.all()
     form= FormBusuquedaFamiliar()
-    return render(request, "resultadoBusquedaFamiliar.html", {"buscar":buscar, "form":form})
-    
+    return render(request, "AppMvt/busquedaFamiliar.html", {"buscar":buscar, "form":form})
 
 #este es un formulario creado con html(el cual fue reemplazado con el uso de 'Forms')
 """def usuariosFormulario(request):
