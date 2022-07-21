@@ -8,7 +8,7 @@ Miembros: Ian Munna Fourcade.
 *Python manage.py migrate*
 *Python manage.py makemigrations*
  
--Una vez ejecutado el comando 'python manage.py runserver' y dirigirnos a la web (generalmente usaremos la url 'http://127.0.0.1:8000/')tendremos las siguientes opciones:
+-Una vez ejecutado el comando 'python manage.py runserver' y dirigirnos a la web (generalmente usaremos la url 'http://127.0.0.1:8000/') tendremos las siguientes opciones:
 
 -Dentro de la web podremos realizar diferentes acciones mediante los siguientes comandos (los cuales ingresaremos en nuestra url):
 
