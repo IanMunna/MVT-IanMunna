@@ -9,6 +9,6 @@ urlpatterns = [
     path('Hogar/', views.hogar, name='hogar'),
     path('', views.inicio, name='inicio'),
     path('familiarFormulario/', views.familiarFormulario, name='familiarFormulario'),
-    path('busquedaFamiliar', views.busquedaFamiliar, name='busquedaFamiliar'),
+    path('busquedaFamiliar/', views.busquedaFamiliar, name='busquedaFamiliar'),
     path('buscar/', views.buscar),
 ]
