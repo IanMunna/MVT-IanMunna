@@ -7,16 +7,19 @@
     <title>Document</title>
 </head>
 <body>
-    <h1>Resultados de la busqueda: {{buscar}}</h1>
+    <p>Resultados de la busqueda: {{buscar}} </p>
 
-    {% if edad %}
-
-    {% for nombre in edad %}
-        <p> {{familiar.nombre}}</p>
-            <br>
-
-    {% endfor %}
-
-    {% end if %}
+    {% if buscar %}
+        <ul>
+            {% for familiar in buscar %}
+            <li>
+                <p> {{familiar.nombre}}</p>
+                <p> {{familiar.edad}}</p>
+            </li>
+            {% endfor %}
+        </ul>
+    {% else %}
+        No se encontraron resultados.
+    {% endif %}
 </body>
 </html>

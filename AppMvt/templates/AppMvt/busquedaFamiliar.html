@@ -7,17 +7,19 @@
     <title>Document</title>
 </head>
 <body>
-    <h1> Busqueda de familiar:</h1>
+    <h1>Busqueda de familiar:</h1>
+
+    <h2>Por favor, ingrese la edad correspondiente</h2>
 
     {% if edad.errors %}
 
-        <p style="color:red"> LA EDAD NO CORRESPONDE A NINGUN FAMILIAR</p>
-
+    <p style="color: red">NO COINCIDE CON LA LISTA DE FAMILIARES</p> 
+    
     {% endif %}
     
     <form action="/AppMvt/buscar/" method="GET">
 
-        <input type="number" name="nombre" id="nombre">
+        <input type="number" name="edad" id="edad">
         <input type="submit", value="Enviar">
     </form>
     

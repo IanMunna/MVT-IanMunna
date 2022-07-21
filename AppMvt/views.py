@@ -1,11 +1,13 @@
+from os import lseek
 from xml.dom.minidom import Document
 from django.shortcuts import render
 from django.http import HttpResponse
 from AppMvt.models import Familiar, Mascota, Hogar
 from django.template import Context, Template
 from AppMvt.forms import familiarForm
+from MVT.AppMvt.forms import FormBusuquedaFamiliar
 
-#vistas de la web
+#vistas de la web 
 def inicio(request):
     return render (request, "AppMvt/familiares.html")
 
@@ -22,19 +24,14 @@ def busquedaFamiliar(request):
     return render(request, "AppMvt/busquedaFamiliar.html")
 
 def buscar(request):
-    
-    if request.GET["edad"]:
+    edadFamiliar= request.GET.get('edad')
 
-        #respuesta= f"Estoy buscando al familiar: {request.GET['familiar']}"
-        edadF= request.GET["edad"]
-        edad= Familiar.objects.filter(edad__icontains=edad)
-
-        return render(request, "AppMvt/resultadoBusquedaFamiliar.html", {"edad":edadF, "nombre":edad})
-
+    if edadFamiliar:
+        buscar= Familiar.objects.filter(edad__icontains=edadFamiliar)
     else:
-        respuesta= "No ingresaste datos validos"
-    
-    return  HttpResponse(respuesta)
+        buscar= Familiar.objects.all()
+    form= FormBusuquedaFamiliar()
+    return render(request, "resultadoBusquedaFamiliar.html", {"buscar":buscar, "form":form})
     
 
 #este es un formulario creado con html(el cual fue reemplazado con el uso de 'Forms')

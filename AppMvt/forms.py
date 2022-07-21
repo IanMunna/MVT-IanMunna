@@ -8,3 +8,6 @@ class familiarForm(forms.Form):
     email= forms.EmailField()
     profesion= forms.CharField(max_length=50)
     fecha_nacimiento= forms.DateField()
+
+class FormBusuquedaFamiliar(forms.Form):
+    edad= forms.IntegerField()
